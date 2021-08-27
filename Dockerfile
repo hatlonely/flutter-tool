@@ -7,3 +7,4 @@ RUN flutter build web
 FROM nginx:1.21.1-alpine
 
 COPY --from=build /flutter/flutter_tool/build/web /web
+COPY ops/docker/default.conf /etc/nginx/conf.d/default.conf
