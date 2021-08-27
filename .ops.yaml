@@ -1,0 +1,28 @@
+name: flutter-tool
+
+dep:
+  ops:
+    type: git
+    url: "https://github.com/hatlonely/ops.git"
+    version: master
+
+env:
+  default:
+    NAME: "flutter-tool"
+    IMAGE_REPOSITORY: "flutter-tool"
+    IMAGE_TAG: "$(git describe --tags | awk '{print(substr($0,2,length($0)))}')"
+  dev:
+    K8S_CONTEXT: "home-k8s"
+    NAMESPACE: "dev"
+    REGISTRY_ENDPOINT: "{{.registry.aliyun.endpoint}}"
+    REGISTRY_USERNAME: "{{.registry.aliyun.username}}"
+    REGISTRY_PASSWORD: "{{.registry.aliyun.password}}"
+    REGISTRY_NAMESPACE: "{{.registry.aliyun.namespace}}"
+
+task:
+  image:
+    step:
+      - docker build --tag="${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}" .
+      - docker login --username="${REGISTRY_USERNAME}" --password="${REGISTRY_PASSWORD}" "${REGISTRY_ENDPOINT}"
+      - docker tag "${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}" "${REGISTRY_ENDPOINT}/${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}"
+      - docker push "${REGISTRY_ENDPOINT}/${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}"
