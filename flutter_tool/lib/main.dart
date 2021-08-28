@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MyApp());
+  GoogleFonts.config.allowRuntimeFetching = false;
+  runApp(ToolApp());
 }
 
-class MyApp extends StatelessWidget {
+class ToolApp extends StatelessWidget {
+  const ToolApp({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '程序员工具集',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: '程序员工具集'),
     );
   }
 }
