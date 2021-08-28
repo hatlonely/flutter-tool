@@ -18,8 +18,9 @@ env:
     REGISTRY_USERNAME: "{{.registry.aliyun.username}}"
     REGISTRY_PASSWORD: "{{.registry.aliyun.password}}"
     REGISTRY_NAMESPACE: "{{.registry.aliyun.namespace}}"
+    PULL_SECRET_NAME: "hatlonely-pull-secret"
     REPLICA_COUNT: 2
-    INGRESS_HOST: "k8s.account.hatlonely.com"
+    INGRESS_HOST: "k8s.tool.hatlonely.com"
     SECRET_NAME: "k8s-secret"
 
 task:
@@ -52,7 +53,7 @@ task:
         validation: x in ["diff", "install", "upgrade", "delete"]
     step:
       - test "${K8S_CONTEXT}" == "$(kubectl config current-context)" || exit 1
-      - sh ${DEP}/ops/tool/render.sh ${DEP}/ops/helm/myapp ${TMP}/helm/${NAME}
+      - sh ${DEP}/ops/tool/render.sh ${DEP}/ops/helm/flutter-app ${TMP}/helm/${NAME}
       - sh ${DEP}/ops/tool/render.sh ops/helm ${TMP}/helm
       - |
         case "${cmd}" in
