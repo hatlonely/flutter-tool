@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-const String base64Readme = '''
+const String kBase64ToolReadMe = '''
 ## 简介
 
 Base64 编码是一种将二进制流转化成可见字符的编码，使用 64 个可见字符，二进制中的每 6 位编码成一个可见字符，
@@ -45,7 +45,7 @@ class Base64ToolPage extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     child: MarkdownBody(
                       selectable: true,
-                      data: base64Readme,
+                      data: kBase64ToolReadMe,
                     ),
                   ),
                 ),
