@@ -95,10 +95,10 @@ class _TimeToolState extends State<TimeTool> {
                   if (text == null || text == '') {
                     return null;
                   }
-                  if (kTimestampRegexp.hasMatch(text!)) {
+                  if (kTimestampRegexp.hasMatch(text)) {
                     return null;
                   }
-                  var t = DateTime.tryParse(text!);
+                  var t = DateTime.tryParse(text);
                   if (t == null) {
                     return "无效的时间格式";
                   }

@@ -2,6 +2,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tool/pages/tools/base64_tool_page.dart';
 import 'package:flutter_tool/pages/tools/time_tool_page.dart';
+import 'package:flutter_tool/pages/tools/url_encode_tool_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -43,6 +44,7 @@ class HomePage extends StatelessWidget {
   static final routes = {
     '/tool/base64': (context) => Base64ToolPage(),
     '/tool/time': (context) => TimeToolPage(),
+    '/tool/urlencode': (context) => URLEncodeToolPage(),
   };
 
   @override
@@ -80,6 +82,7 @@ class ToolsGrid extends StatelessWidget {
   static const List<_ToolCardItemInfo> _toolCards = [
     _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
     _ToolCardItemInfo(button: "Unix 时间戳", route: "/tool/time"),
+    _ToolCardItemInfo(button: "URL 编解码", route: "/tool/urlencode"),
   ];
 
   @override
