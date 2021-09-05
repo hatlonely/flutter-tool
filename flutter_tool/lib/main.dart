@@ -1,3 +1,4 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tool/pages/tools/base64_tool_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,25 +20,14 @@ class ToolApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '程序员工具集',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+      theme: FlexColorScheme.light(
+        scheme: FlexScheme.barossa,
+        visualDensity: FlexColorScheme.comfortablePlatformDensity,
         fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-        textTheme: TextTheme(
-          headline1: TextStyle(fontFamilyFallback: fallbackFonts),
-          headline2: TextStyle(fontFamilyFallback: fallbackFonts),
-          headline3: TextStyle(fontFamilyFallback: fallbackFonts),
-          headline4: TextStyle(fontFamilyFallback: fallbackFonts),
-          headline5: TextStyle(fontFamilyFallback: fallbackFonts),
-          headline6: TextStyle(fontFamilyFallback: fallbackFonts),
-          bodyText2: TextStyle(fontFamilyFallback: fallbackFonts),
-          bodyText1: TextStyle(fontFamilyFallback: fallbackFonts),
-          subtitle1: TextStyle(fontFamilyFallback: fallbackFonts),
-          subtitle2: TextStyle(fontFamilyFallback: fallbackFonts),
-          button: TextStyle(fontFamilyFallback: fallbackFonts),
-          caption: TextStyle(fontFamilyFallback: fallbackFonts),
-          overline: TextStyle(fontFamilyFallback: fallbackFonts),
-        ),
-      ),
+        transparentStatusBar: true,
+        appBarElevation: 5,
+      ).toTheme,
+      themeMode: ThemeMode.system,
       routes: HomePage.routes,
       home: HomePage(title: '程序员工具集'),
     );
@@ -57,6 +47,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 5,
         title: Text(this.title),
       ),
       body: SingleChildScrollView(
@@ -77,13 +68,14 @@ class _ToolCardItemInfo {
   final String button;
   final String route;
 
-  const _ToolCardItemInfo({required this.button, required this.route});
+  const _ToolCardItemInfo({
+    required this.button,
+    required this.route,
+  });
 }
 
 class ToolsGrid extends StatelessWidget {
   static const List<_ToolCardItemInfo> _toolCards = [
-    _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
-    _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
     _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
     _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
   ];
@@ -107,10 +99,13 @@ class ToolsGrid extends StatelessWidget {
           children: _toolCards
               .map((e) => Card(
                     elevation: 5,
+                    color: Theme.of(context).colorScheme.primaryVariant,
                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                     margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: InkWell(
-                      child: Text(e.button),
+                      child: Center(
+                        child: Text(e.button, style: TextStyle(color: Colors.white)),
+                      ),
                       onTap: () => Navigator.pushNamed(context, e.route),
                     ),
                   ))
