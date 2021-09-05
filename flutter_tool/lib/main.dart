@@ -59,10 +59,62 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(this.title),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => Navigator.pushNamed(context, '/tool/base64'),
-          child: Text("text"),
+      body: SingleChildScrollView(
+        child: Center(
+          child: SizedBox(
+            width: 800,
+            child: Column(
+              children: [ToolsGrid()],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ToolCardItemInfo {
+  final String button;
+  final String route;
+
+  const _ToolCardItemInfo({required this.button, required this.route});
+}
+
+class ToolsGrid extends StatelessWidget {
+  static const List<_ToolCardItemInfo> _toolCards = [
+    _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
+    _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
+    _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
+    _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+      margin: EdgeInsets.fromLTRB(10, 50, 10, 20),
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: GridView.extent(
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          shrinkWrap: true,
+          maxCrossAxisExtent: 200.0,
+          physics: NeverScrollableScrollPhysics(),
+          children: _toolCards
+              .map((e) => Card(
+                    elevation: 5,
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                    margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    child: InkWell(
+                      child: Text(e.button),
+                      onTap: () => Navigator.pushNamed(context, e.route),
+                    ),
+                  ))
+              .toList(),
         ),
       ),
     );
