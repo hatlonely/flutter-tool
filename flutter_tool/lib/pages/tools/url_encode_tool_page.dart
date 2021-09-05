@@ -19,7 +19,7 @@ class URLEncodeToolPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
-            width: 600,
+            width: 800,
             child: Column(
               children: [
                 URLEncodeTool(),

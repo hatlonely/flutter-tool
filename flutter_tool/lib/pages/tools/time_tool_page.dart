@@ -4,7 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 const String kTimeToolReadMe = '''
 ## 简介
 
-Unix 时间戳返回 1970-01-01 到当前时间的秒数，Unix 时间戳不分时区，在任何时区都是一样的。
+Unix 时间戳返回 1970-01-01 到当前时间的秒数，不考虑闰秒。Unix 时间戳不分时区，在任何时区都是一样的。在大多数的UNIX系统中UNIX时间戳存储为32位，这样会引发2038年问题或Y2038。
 
 ## 常用命令
 
@@ -23,7 +23,7 @@ class TimeToolPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
-            width: 600,
+            width: 800,
             child: Column(
               children: [
                 TimeTool(),
