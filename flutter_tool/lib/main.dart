@@ -18,7 +18,33 @@ class ToolApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: '程序员工具集'),
+      routes: ToolPage.routes,
+      home: ToolPage(title: '程序员工具集'),
+    );
+  }
+}
+
+class ToolPage extends StatelessWidget {
+  final String title;
+
+  ToolPage({Key? key, required this.title}) : super(key: key);
+
+  static final routes = {
+    '/tool/base64': (context) => Text("hello world"),
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(this.title),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => Navigator.pushNamed(context, '/tool/base64'),
+          child: Text("text"),
+        ),
+      ),
     );
   }
 }
