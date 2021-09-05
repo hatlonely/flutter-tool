@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tool/pages/tools/base64_tool_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class ToolApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: '程序员工具集',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -30,7 +32,7 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
 
   static final routes = {
-    '/tool/base64': (context) => Text("hello world"),
+    '/tool/base64': (context) => Base64ToolPage(),
   };
 
   @override
