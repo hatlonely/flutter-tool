@@ -18,16 +18,16 @@ class ToolApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routes: ToolPage.routes,
-      home: ToolPage(title: '程序员工具集'),
+      routes: HomePage.routes,
+      home: HomePage(title: '程序员工具集'),
     );
   }
 }
 
-class ToolPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   final String title;
 
-  ToolPage({Key? key, required this.title}) : super(key: key);
+  HomePage({Key? key, required this.title}) : super(key: key);
 
   static final routes = {
     '/tool/base64': (context) => Text("hello world"),
