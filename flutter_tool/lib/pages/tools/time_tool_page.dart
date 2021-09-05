@@ -54,8 +54,11 @@ class TimeTool extends StatefulWidget {
 }
 
 class _TimeToolState extends State<TimeTool> {
+  final _formKey = GlobalKey<FormState>();
   late TextEditingController _timeTextController;
   DateTime _time = DateTime.now();
+
+  static final kTimestampRegexp = RegExp(r'^\d{1,10}$');
 
   @override
   void initState() {
@@ -79,12 +82,28 @@ class _TimeToolState extends State<TimeTool> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
-            TextField(
-              controller: _timeTextController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: '时间',
-                hintText: '请输入要转换的时间或时间戳',
+            Form(
+              key: _formKey,
+              child: TextFormField(
+                controller: _timeTextController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: '时间',
+                  hintText: '请输入要转换的时间或时间戳',
+                ),
+                validator: (String? text) {
+                  if (text == null || text == '') {
+                    return null;
+                  }
+                  if (kTimestampRegexp.hasMatch(text!)) {
+                    return null;
+                  }
+                  var t = DateTime.tryParse(text!);
+                  if (t == null) {
+                    return "无效的时间格式";
+                  }
+                  return null;
+                },
               ),
             ),
             SizedBox(height: 10),
@@ -93,9 +112,24 @@ class _TimeToolState extends State<TimeTool> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // setState(() {
-                    //   this._convertedText = base64.encode(utf8.encode(_base64TextController.value.text));
-                    // });
+                    if (!_formKey.currentState!.validate()) {
+                      return;
+                    }
+                    setState(() {
+                      var text = _timeTextController.value.text;
+                      if (text == '') {
+                        this._time = DateTime.now();
+                        return;
+                      }
+                      if (kTimestampRegexp.hasMatch(text)) {
+                        this._time = DateTime.fromMillisecondsSinceEpoch(int.parse(text) * 1000);
+                        return;
+                      }
+                      var t = DateTime.tryParse(text);
+                      if (t != null) {
+                        this._time = t;
+                      }
+                    });
                   },
                   child: Text('转换'),
                 ),
@@ -107,6 +141,15 @@ class _TimeToolState extends State<TimeTool> {
                   },
                   child: Text('当前时间'),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      this._time =
+                          DateTime.fromMillisecondsSinceEpoch(this._time.millisecondsSinceEpoch ~/ 3600000 * 3600000);
+                    });
+                  },
+                  child: Text('整点'),
+                ),
               ],
             ),
             SizedBox(height: 10),
@@ -114,7 +157,7 @@ class _TimeToolState extends State<TimeTool> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text("时间戳（秒）"),
+                Text("时间戳（秒）", textAlign: TextAlign.right),
                 Divider(),
                 SelectableText(
                   (this._time.millisecondsSinceEpoch ~/ 1000).toString(),
@@ -125,7 +168,7 @@ class _TimeToolState extends State<TimeTool> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text("时间戳（毫秒）"),
+                Text("时间戳（毫秒）", textAlign: TextAlign.right),
                 Divider(),
                 SelectableText(
                   (this._time.millisecondsSinceEpoch).toString(),
@@ -136,7 +179,18 @@ class _TimeToolState extends State<TimeTool> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text("ISO8601"),
+                Text("时间", textAlign: TextAlign.right),
+                Divider(),
+                SelectableText(
+                  this._time.toString(),
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text("ISO8601", textAlign: TextAlign.right),
                 Divider(),
                 SelectableText(
                   this._time.toIso8601String(),
@@ -147,7 +201,7 @@ class _TimeToolState extends State<TimeTool> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text("ISO8601 UTC"),
+                Text("ISO8601 UTC", textAlign: TextAlign.right),
                 Divider(),
                 SelectableText(
                   this._time.toUtc().toIso8601String(),
