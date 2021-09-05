@@ -2,6 +2,28 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+
+const String base64Readme = '''
+## 简介
+
+Base64 编码是一种将二进制流转化成可见字符的编码，使用 64 个可见字符，二进制中的每 6 位编码成一个可见字符，
+剩下不足 6 位，用 0 填充
+
+## 编码表
+
+标准编码表
+
+```
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+```
+
+URL 编码表
+
+```
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_
+```
+''';
 
 class Base64ToolPage extends StatelessWidget {
   @override
@@ -15,6 +37,18 @@ class Base64ToolPage extends StatelessWidget {
             child: Column(
               children: [
                 Base64Tool(),
+                Card(
+                  elevation: 5,
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                  margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: MarkdownBody(
+                      selectable: true,
+                      data: base64Readme,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
