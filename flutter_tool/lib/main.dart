@@ -24,7 +24,7 @@ class ToolApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: '程序员工具集',
       theme: FlexColorScheme.light(
-        scheme: FlexScheme.barossa,
+        scheme: FlexScheme.bigStone,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         // fontFamily: GoogleFonts.robotoCondensed().fontFamily,
         transparentStatusBar: true,
