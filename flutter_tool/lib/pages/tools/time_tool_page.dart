@@ -154,25 +154,30 @@ class _TimeToolState extends State<TimeTool> {
             ),
             SizedBox(height: 10),
             Divider(),
-            ListTile(
-              title: Text("时间戳（秒）"),
-              trailing: SelectableText((this._time.millisecondsSinceEpoch ~/ 1000).toString()),
-            ),
-            ListTile(
-              title: Text("时间戳（毫秒）"),
-              trailing: SelectableText((this._time.millisecondsSinceEpoch).toString()),
-            ),
-            ListTile(
-              title: Text("时间"),
-              trailing: SelectableText(this._time.toString()),
-            ),
-            ListTile(
-              title: Text("ISO8601"),
-              trailing: SelectableText(this._time.toIso8601String()),
-            ),
-            ListTile(
-              title: Text("ISO8601 UTC"),
-              trailing: SelectableText(this._time.toUtc().toIso8601String()),
+            ListView(
+              shrinkWrap: true,
+              children: [
+                ListTile(
+                  title: Text("时间戳（秒）"),
+                  trailing: SelectableText((this._time.millisecondsSinceEpoch ~/ 1000).toString()),
+                ),
+                ListTile(
+                  title: Text("时间戳（毫秒）"),
+                  trailing: SelectableText((this._time.millisecondsSinceEpoch).toString()),
+                ),
+                ListTile(
+                  title: Text("时间"),
+                  trailing: SelectableText(this._time.toString()),
+                ),
+                ListTile(
+                  title: Text("ISO8601"),
+                  trailing: SelectableText(this._time.toIso8601String()),
+                ),
+                ListTile(
+                  title: Text("ISO8601 UTC"),
+                  trailing: SelectableText(this._time.toUtc().toIso8601String()),
+                ),
+              ],
             ),
           ],
         ),
