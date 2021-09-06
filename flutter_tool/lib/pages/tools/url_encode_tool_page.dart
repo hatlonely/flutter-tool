@@ -15,7 +15,7 @@ class URLEncodeToolPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Base64 编解码')),
+      appBar: AppBar(title: const Text('URL 编解码')),
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(

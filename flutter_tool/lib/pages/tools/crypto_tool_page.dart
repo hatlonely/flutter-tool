@@ -22,7 +22,7 @@ class CryptoToolPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Base64 编解码')),
+      appBar: AppBar(title: const Text('消息摘要')),
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(

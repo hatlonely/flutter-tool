@@ -4,14 +4,14 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 const String kBinaryConversionToolReadMe = '''
 ## 简介
 
-无
+十六进制（简写为 hex 或下标 16）在数学中是一种逢 16 进 1 的进位制。一般用数字 0\-9 和字母 A\-F（或a\-f）表示，其中: A\-F 表示 10\-15，这些称作十六进制数字
 ''';
 
 class BinaryConversionToolPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Base64 编解码')),
+      appBar: AppBar(title: const Text('进制转换')),
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
@@ -87,74 +87,47 @@ class _BinaryConversionToolState extends State<BinaryConversionTool> {
               ),
             ),
             SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [],
-              // children: [
-              //   ElevatedButton(
-              //     onPressed: () {
-              //       if (!_formKey.currentState!.validate()) {
-              //         return;
-              //       }
-              //       setState(() {
-              //         var text = _textController.value.text;
-              //         if (text == '') {
-              //           this._time = DateTime.now();
-              //           return;
-              //         }
-              //         if (kTimestampRegexp.hasMatch(text)) {
-              //           this._time = DateTime.fromMillisecondsSinceEpoch(int.parse(text) * 1000);
-              //           return;
-              //         }
-              //         var t = DateTime.tryParse(text);
-              //         if (t != null) {
-              //           this._time = t;
-              //         }
-              //       });
-              //     },
-              //     child: Text('转换'),
-              //   ),
-              //   ElevatedButton(
-              //     onPressed: () {
-              //       setState(() {
-              //         this._time = DateTime.now();
-              //       });
-              //     },
-              //     child: Text('当前时间'),
-              //   ),
-              //   ElevatedButton(
-              //     onPressed: () {
-              //       setState(() {
-              //         this._time =
-              //             DateTime.fromMillisecondsSinceEpoch(this._time.millisecondsSinceEpoch ~/ 3600000 * 3600000);
-              //       });
-              //     },
-              //     child: Text('整点'),
-              //   ),
-              // ],
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 30,
+              runSpacing: 10,
+              children: [
+                ["2进制", 2],
+                ["4进制", 4],
+                ["8进制", 8],
+                ["10进制", 10],
+                ["16进制", 16],
+                ["32进制", 32],
+              ]
+                  .map((e) => ElevatedButton(
+                        child: Text(e[0] as String),
+                        onPressed: () {
+                          setState(() {
+                            this._bigInt = BigInt.parse(_textController.value.text, radix: e[1] as int);
+                          });
+                        },
+                      ))
+                  .toList(),
             ),
             SizedBox(height: 10),
             Divider(),
-            // ListTile(
-            //   title: Text("时间戳（秒）"),
-            //   trailing: SelectableText((this._time.millisecondsSinceEpoch ~/ 1000).toString()),
-            // ),
-            // ListTile(
-            //   title: Text("时间戳（毫秒）"),
-            //   trailing: SelectableText((this._time.millisecondsSinceEpoch).toString()),
-            // ),
-            // ListTile(
-            //   title: Text("时间"),
-            //   trailing: SelectableText(this._time.toString()),
-            // ),
-            // ListTile(
-            //   title: Text("ISO8601"),
-            //   trailing: SelectableText(this._time.toIso8601String()),
-            // ),
-            // ListTile(
-            //   title: Text("ISO8601 UTC"),
-            //   trailing: SelectableText(this._time.toUtc().toIso8601String()),
-            // ),
+            ListView(
+              shrinkWrap: true,
+              children: [
+                ["2进制", 2],
+                ["4进制", 4],
+                ["8进制", 8],
+                ["10进制", 10],
+                ["16进制", 16],
+                ["32进制", 32],
+              ]
+                  .map((e) => ListTile(
+                        title: Text(e[0] as String),
+                        subtitle: Wrap(children: [SelectableText(_bigInt.toRadixString(e[1] as int))]),
+                        dense: false,
+                      ))
+                  .toList(),
+            ),
           ],
         ),
       ),

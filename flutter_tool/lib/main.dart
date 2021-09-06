@@ -85,9 +85,9 @@ class _ToolCardItemInfo {
 class ToolsGrid extends StatelessWidget {
   static const List<_ToolCardItemInfo> _toolCards = [
     _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
-    _ToolCardItemInfo(button: "Unix 时间戳", route: "/tool/time"),
+    _ToolCardItemInfo(button: "UNIX 时间戳", route: "/tool/time"),
     _ToolCardItemInfo(button: "URL 编解码", route: "/tool/urlencode"),
-    _ToolCardItemInfo(button: "消息摘要算法", route: "/tool/crypto"),
+    _ToolCardItemInfo(button: "消息摘要", route: "/tool/crypto"),
     _ToolCardItemInfo(button: "进制转换", route: "/tool/binaryConversion"),
   ];
 
