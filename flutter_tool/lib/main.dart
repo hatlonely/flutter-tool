@@ -28,6 +28,8 @@ class ToolApp extends StatelessWidget {
         scheme: FlexScheme.bigStone,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         // fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+        // fontFamily: GoogleFonts.longCang().fontFamily,
+        fontFamily: 'SourceHanSansSC',
         transparentStatusBar: true,
         appBarElevation: 5,
       ).toTheme,
