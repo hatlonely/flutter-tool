@@ -154,60 +154,25 @@ class _TimeToolState extends State<TimeTool> {
             ),
             SizedBox(height: 10),
             Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text("时间戳（秒）", textAlign: TextAlign.right),
-                Divider(),
-                SelectableText(
-                  (this._time.millisecondsSinceEpoch ~/ 1000).toString(),
-                  textAlign: TextAlign.left,
-                ),
-              ],
+            ListTile(
+              title: Text("时间戳（秒）"),
+              trailing: SelectableText((this._time.millisecondsSinceEpoch ~/ 1000).toString()),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text("时间戳（毫秒）", textAlign: TextAlign.right),
-                Divider(),
-                SelectableText(
-                  (this._time.millisecondsSinceEpoch).toString(),
-                  textAlign: TextAlign.left,
-                ),
-              ],
+            ListTile(
+              title: Text("时间戳（毫秒）"),
+              trailing: SelectableText((this._time.millisecondsSinceEpoch).toString()),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text("时间", textAlign: TextAlign.right),
-                Divider(),
-                SelectableText(
-                  this._time.toString(),
-                  textAlign: TextAlign.left,
-                ),
-              ],
+            ListTile(
+              title: Text("时间"),
+              trailing: SelectableText(this._time.toString()),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text("ISO8601", textAlign: TextAlign.right),
-                Divider(),
-                SelectableText(
-                  this._time.toIso8601String(),
-                  textAlign: TextAlign.left,
-                ),
-              ],
+            ListTile(
+              title: Text("ISO8601"),
+              trailing: SelectableText(this._time.toIso8601String()),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text("ISO8601 UTC", textAlign: TextAlign.right),
-                Divider(),
-                SelectableText(
-                  this._time.toUtc().toIso8601String(),
-                  textAlign: TextAlign.left,
-                ),
-              ],
+            ListTile(
+              title: Text("ISO8601 UTC"),
+              trailing: SelectableText(this._time.toUtc().toIso8601String()),
             ),
           ],
         ),
