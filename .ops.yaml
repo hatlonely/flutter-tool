@@ -31,7 +31,7 @@ env:
     REGISTRY_NAMESPACE: "{{.registry.aliyun.namespace}}"
     PULL_SECRET_NAME: "hatlonely-pull-secret"
     REPLICA_COUNT: 2
-    INGRESS_HOST: "k8s.tool.hatlonely.com"
+    INGRESS_HOST: "k8s.tool.c646969cbbabb4eb4ac9d7b10cb5d87ed.cn-shanghai.alicontainer.com"
     SECRET_NAME: "k8s-secret"
 
 task:
@@ -50,6 +50,9 @@ task:
             --docker-password=${REGISTRY_PASSWORD} \
             --namespace=${NAMESPACE}
         }
+  font:
+    step:
+      - wget https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip
   image:
     step:
       - docker build --tag="${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}" .
