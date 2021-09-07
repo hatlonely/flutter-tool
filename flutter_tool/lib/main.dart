@@ -29,7 +29,7 @@ class ToolApp extends StatelessWidget {
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         // fontFamily: GoogleFonts.robotoCondensed().fontFamily,
         // fontFamily: GoogleFonts.longCang().fontFamily,
-        fontFamily: 'SourceHanSansSC',
+        // fontFamily: 'SourceHanSansSC',
         transparentStatusBar: true,
         appBarElevation: 5,
       ).toTheme,
