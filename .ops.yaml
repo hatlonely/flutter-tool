@@ -22,6 +22,17 @@ env:
     REPLICA_COUNT: 2
     INGRESS_HOST: "k8s.tool.hatlonely.com"
     SECRET_NAME: "k8s-secret"
+  ali:
+    K8S_CONTEXT: "weboffice-regression"
+    NAMESPACE: "hatlonely"
+    REGISTRY_ENDPOINT: "{{.registry.aliyun.endpoint}}"
+    REGISTRY_USERNAME: "{{.registry.aliyun.username}}"
+    REGISTRY_PASSWORD: "{{.registry.aliyun.password}}"
+    REGISTRY_NAMESPACE: "{{.registry.aliyun.namespace}}"
+    PULL_SECRET_NAME: "hatlonely-pull-secret"
+    REPLICA_COUNT: 2
+    INGRESS_HOST: "k8s.tool.hatlonely.com"
+    SECRET_NAME: "k8s-secret"
 
 task:
   namespace:
