@@ -100,8 +100,10 @@ class _Base64ToolState extends State<Base64Tool> {
               ),
             ),
             SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 30,
+              runSpacing: 10,
               children: [
                 ElevatedButton(
                   onPressed: () {
