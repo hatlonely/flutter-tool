@@ -5,7 +5,6 @@ import 'package:flutter_tool/pages/tools/binary_conversion_tool_page.dart';
 import 'package:flutter_tool/pages/tools/crypto_tool_page.dart';
 import 'package:flutter_tool/pages/tools/escape_tool_page.dart';
 import 'package:flutter_tool/pages/tools/time_tool_page.dart';
-import 'package:flutter_tool/pages/tools/url_encode_tool_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -49,7 +48,6 @@ class HomePage extends StatelessWidget {
   static final routes = {
     '/tool/base64': (context) => Base64ToolPage(),
     '/tool/time': (context) => TimeToolPage(),
-    '/tool/urlencode': (context) => URLEncodeToolPage(),
     '/tool/crypto': (context) => CryptoToolPage(),
     '/tool/binaryConversion': (context) => BinaryConversionToolPage(),
     '/tool/escape': (context) => EscapeToolPage(),
@@ -80,7 +78,6 @@ class ToolsGrid extends StatelessWidget {
   static const _toolCards = [
     ["Base64 编解码", "/tool/base64"],
     ["UNIX 时间戳", "/tool/time"],
-    ["URL 编解码", "/tool/urlencode"],
     ["消息摘要", "/tool/crypto"],
     ["进制转换", "/tool/binaryConversion"],
     ["字符串转义", "/tool/escape"],
