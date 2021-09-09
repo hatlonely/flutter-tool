@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 const String kTimeToolReadMe = '''
@@ -157,27 +158,22 @@ class _TimeToolState extends State<TimeTool> {
             ListView(
               shrinkWrap: true,
               children: [
-                ListTile(
-                  title: Text("时间戳（秒）"),
-                  trailing: SelectableText((this._time.millisecondsSinceEpoch ~/ 1000).toString()),
-                ),
-                ListTile(
-                  title: Text("时间戳（毫秒）"),
-                  trailing: SelectableText((this._time.millisecondsSinceEpoch).toString()),
-                ),
-                ListTile(
-                  title: Text("时间"),
-                  trailing: SelectableText(this._time.toString()),
-                ),
-                ListTile(
-                  title: Text("ISO8601"),
-                  trailing: SelectableText(this._time.toIso8601String()),
-                ),
-                ListTile(
-                  title: Text("ISO8601 UTC"),
-                  trailing: SelectableText(this._time.toUtc().toIso8601String()),
-                ),
-              ],
+                ["时间戳（秒）", (this._time.millisecondsSinceEpoch ~/ 1000).toString()],
+                ["时间戳（毫秒）", (this._time.millisecondsSinceEpoch).toString()],
+                ["时间", this._time.toString()],
+                ["ISO8601", this._time.toIso8601String()],
+                ["ISO8601 UTC", this._time.toUtc().toIso8601String()],
+              ]
+                  .map((e) => ListTile(
+                        title: Text(e[0]),
+                        trailing: SelectableText(
+                          e[1],
+                          onTap: () {
+                            Clipboard.setData(new ClipboardData(text: e[1]));
+                          },
+                        ),
+                      ))
+                  .toList(),
             ),
           ],
         ),

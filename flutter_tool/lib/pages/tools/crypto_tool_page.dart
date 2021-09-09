@@ -155,7 +155,7 @@ class _CryptoToolState extends State<CryptoTool> {
             SelectableText(
               this._convertedText,
               textAlign: TextAlign.left,
-              onSelectionChanged: (TextSelection selection, SelectionChangedCause? cause) {
+              onTap: () {
                 Clipboard.setData(new ClipboardData(text: this._convertedText));
               },
             ),

@@ -125,7 +125,7 @@ class _Base64ToolState extends State<Base64Tool> {
             SelectableText(
               this._convertedText,
               textAlign: TextAlign.left,
-              onSelectionChanged: (TextSelection selection, SelectionChangedCause? cause) {
+              onTap: () {
                 Clipboard.setData(new ClipboardData(text: this._convertedText));
               },
             ),

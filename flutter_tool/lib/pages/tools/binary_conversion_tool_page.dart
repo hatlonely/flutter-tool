@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 const String kBinaryConversionToolReadMe = '''
@@ -114,16 +115,23 @@ class _BinaryConversionToolState extends State<BinaryConversionTool> {
             ListView(
               shrinkWrap: true,
               children: [
-                ["2进制", 2],
-                ["4进制", 4],
-                ["8进制", 8],
-                ["10进制", 10],
-                ["16进制", 16],
-                ["32进制", 32],
+                ["2进制", _bigInt.toRadixString(2)],
+                ["4进制", _bigInt.toRadixString(4)],
+                ["8进制", _bigInt.toRadixString(8)],
+                ["10进制", _bigInt.toRadixString(10)],
+                ["16进制", _bigInt.toRadixString(16)],
+                ["32进制", _bigInt.toRadixString(32)],
               ]
                   .map((e) => ListTile(
-                        title: Text(e[0] as String),
-                        subtitle: Wrap(children: [SelectableText(_bigInt.toRadixString(e[1] as int))]),
+                        title: Text(e[0]),
+                        subtitle: Wrap(children: [
+                          SelectableText(
+                            e[1],
+                            onTap: () {
+                              Clipboard.setData(new ClipboardData(text: e[1]));
+                            },
+                          )
+                        ]),
                         dense: false,
                       ))
                   .toList(),
