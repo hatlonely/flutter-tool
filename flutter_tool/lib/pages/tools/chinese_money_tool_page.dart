@@ -63,18 +63,18 @@ class ChineseMoneyTool extends StatefulWidget {
 }
 
 class _ChineseMoneyToolState extends State<ChineseMoneyTool> {
-  late TextEditingController _base64TextController;
+  late TextEditingController _chineseMoneyTextController;
   String _convertedText = '';
 
   @override
   void initState() {
     super.initState();
-    _base64TextController = TextEditingController();
+    _chineseMoneyTextController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _base64TextController.dispose();
+    _chineseMoneyTextController.dispose();
     super.dispose();
   }
 
@@ -89,13 +89,20 @@ class _ChineseMoneyToolState extends State<ChineseMoneyTool> {
         child: Column(
           children: [
             TextField(
-              controller: _base64TextController,
+              controller: _chineseMoneyTextController,
               keyboardType: TextInputType.multiline,
               maxLines: null,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: '转换文字',
                 hintText: '请输入要转换的文字',
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.clear),
+                  splashRadius: 20,
+                  onPressed: () {
+                    _chineseMoneyTextController.clear();
+                  },
+                ),
               ),
             ),
             SizedBox(height: 10),
@@ -109,7 +116,7 @@ class _ChineseMoneyToolState extends State<ChineseMoneyTool> {
                   .map((e) => ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            this._convertedText = (e[1] as Function)(_base64TextController.value.text);
+                            this._convertedText = (e[1] as Function)(_chineseMoneyTextController.value.text);
                           });
                         },
                         child: Text(e[0] as String),

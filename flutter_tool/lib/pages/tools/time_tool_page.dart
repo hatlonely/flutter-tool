@@ -91,6 +91,13 @@ class _TimeToolState extends State<TimeTool> {
                   border: OutlineInputBorder(),
                   labelText: '时间',
                   hintText: '请输入要转换的时间或时间戳',
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.clear),
+                    splashRadius: 20,
+                    onPressed: () {
+                      _timeTextController.clear();
+                    },
+                  ),
                 ),
                 validator: (String? text) {
                   if (text == null || text == '') {

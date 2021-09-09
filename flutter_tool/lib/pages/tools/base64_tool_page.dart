@@ -97,6 +97,13 @@ class _Base64ToolState extends State<Base64Tool> {
                 border: OutlineInputBorder(),
                 labelText: '转换文字',
                 hintText: '请输入要转换的文字',
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.clear),
+                  splashRadius: 20,
+                  onPressed: () {
+                    _base64TextController.clear();
+                  },
+                ),
               ),
             ),
             SizedBox(height: 10),

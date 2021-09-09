@@ -81,6 +81,13 @@ class _BinaryConversionToolState extends State<BinaryConversionTool> {
                   border: OutlineInputBorder(),
                   labelText: '数字',
                   hintText: '请输入要转换的数字',
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.clear),
+                    splashRadius: 20,
+                    onPressed: () {
+                      _textController.clear();
+                    },
+                  ),
                 ),
                 validator: (String? text) {
                   return null;

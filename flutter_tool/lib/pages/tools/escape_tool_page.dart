@@ -106,6 +106,13 @@ class _EscapeToolState extends State<EscapeTool> {
                 border: OutlineInputBorder(),
                 labelText: '转换文字',
                 hintText: '请输入要转换的文字',
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.clear),
+                  splashRadius: 20,
+                  onPressed: () {
+                    _urlEncodeTextController.clear();
+                  },
+                ),
               ),
             ),
             SizedBox(height: 10),

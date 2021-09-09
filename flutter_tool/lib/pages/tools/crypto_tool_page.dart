@@ -94,6 +94,13 @@ class _CryptoToolState extends State<CryptoTool> {
                 border: OutlineInputBorder(),
                 labelText: '消息',
                 hintText: '请输入消息',
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.clear),
+                  splashRadius: 20,
+                  onPressed: () {
+                    _messageTextController.clear();
+                  },
+                ),
               ),
             ),
             _enableHmac ? SizedBox(height: 10) : Container(),
@@ -106,6 +113,13 @@ class _CryptoToolState extends State<CryptoTool> {
                       border: OutlineInputBorder(),
                       labelText: '密码',
                       hintText: '请输入密码',
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.clear),
+                        splashRadius: 20,
+                        onPressed: () {
+                          _passwordTextController.clear();
+                        },
+                      ),
                     ),
                   )
                 : Container(),
