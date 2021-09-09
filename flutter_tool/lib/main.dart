@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tool/pages/tools/base64_tool_page.dart';
 import 'package:flutter_tool/pages/tools/binary_conversion_tool_page.dart';
 import 'package:flutter_tool/pages/tools/crypto_tool_page.dart';
+import 'package:flutter_tool/pages/tools/escape_tool_page.dart';
 import 'package:flutter_tool/pages/tools/time_tool_page.dart';
 import 'package:flutter_tool/pages/tools/url_encode_tool_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,6 +52,7 @@ class HomePage extends StatelessWidget {
     '/tool/urlencode': (context) => URLEncodeToolPage(),
     '/tool/crypto': (context) => CryptoToolPage(),
     '/tool/binaryConversion': (context) => BinaryConversionToolPage(),
+    '/tool/escape': (context) => EscapeToolPage(),
   };
 
   @override
@@ -81,6 +83,7 @@ class ToolsGrid extends StatelessWidget {
     ["URL 编解码", "/tool/urlencode"],
     ["消息摘要", "/tool/crypto"],
     ["进制转换", "/tool/binaryConversion"],
+    ["字符串转义", "/tool/escape"],
   ];
 
   @override
