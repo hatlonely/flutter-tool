@@ -119,8 +119,7 @@ class _BinaryConversionToolState extends State<BinaryConversionTool> {
             ),
             SizedBox(height: 10),
             Divider(),
-            ListView(
-              shrinkWrap: true,
+            Column(
               children: [
                 ["2进制", _bigInt.toRadixString(2)],
                 ["4进制", _bigInt.toRadixString(4)],

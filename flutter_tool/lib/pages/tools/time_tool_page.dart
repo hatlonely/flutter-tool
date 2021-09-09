@@ -162,8 +162,7 @@ class _TimeToolState extends State<TimeTool> {
             ),
             SizedBox(height: 10),
             Divider(),
-            ListView(
-              shrinkWrap: true,
+            Column(
               children: [
                 ["时间戳（秒）", (this._time.millisecondsSinceEpoch ~/ 1000).toString()],
                 ["时间戳（毫秒）", (this._time.millisecondsSinceEpoch).toString()],
