@@ -105,39 +105,20 @@ class _Base64ToolState extends State<Base64Tool> {
               spacing: 30,
               runSpacing: 10,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      this._convertedText = base64.encode(utf8.encode(_base64TextController.value.text));
-                    });
-                  },
-                  child: Text('StdEncode'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      this._convertedText = base64Url.encode(utf8.encode(_base64TextController.value.text));
-                    });
-                  },
-                  child: Text('URLEncode'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      this._convertedText = utf8.decode(base64.decode(_base64TextController.value.text));
-                    });
-                  },
-                  child: Text('StdDecode'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      this._convertedText = utf8.decode(base64Url.decode(_base64TextController.value.text));
-                    });
-                  },
-                  child: Text('URLDecode'),
-                ),
-              ],
+                ["StdEncode", (String text) => base64.encode(utf8.encode(text))],
+                ["URLEncode", (String text) => base64Url.encode(utf8.encode(text))],
+                ["StdDecode", (String text) => utf8.decode(base64.decode(text))],
+                ["URLDecode", (String text) => utf8.decode(base64Url.decode(text))],
+              ]
+                  .map((e) => ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            this._convertedText = (e[1] as Function)(_base64TextController.value.text);
+                          });
+                        },
+                        child: Text(e[0] as String),
+                      ))
+                  .toList(),
             ),
             SizedBox(height: 10),
             Divider(),
