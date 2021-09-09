@@ -74,23 +74,13 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _ToolCardItemInfo {
-  final String button;
-  final String route;
-
-  const _ToolCardItemInfo({
-    required this.button,
-    required this.route,
-  });
-}
-
 class ToolsGrid extends StatelessWidget {
-  static const List<_ToolCardItemInfo> _toolCards = [
-    _ToolCardItemInfo(button: "Base64 编解码", route: "/tool/base64"),
-    _ToolCardItemInfo(button: "UNIX 时间戳", route: "/tool/time"),
-    _ToolCardItemInfo(button: "URL 编解码", route: "/tool/urlencode"),
-    _ToolCardItemInfo(button: "消息摘要", route: "/tool/crypto"),
-    _ToolCardItemInfo(button: "进制转换", route: "/tool/binaryConversion"),
+  static const _toolCards = [
+    ["Base64 编解码", "/tool/base64"],
+    ["UNIX 时间戳", "/tool/time"],
+    ["URL 编解码", "/tool/urlencode"],
+    ["消息摘要", "/tool/crypto"],
+    ["进制转换", "/tool/binaryConversion"],
   ];
 
   @override
@@ -117,9 +107,9 @@ class ToolsGrid extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: InkWell(
                       child: Center(
-                        child: Text(e.button, style: TextStyle(color: Colors.white)),
+                        child: Text(e[0], style: TextStyle(color: Colors.white)),
                       ),
-                      onTap: () => Navigator.pushNamed(context, e.route),
+                      onTap: () => Navigator.pushNamed(context, e[1]),
                     ),
                   ))
               .toList(),
