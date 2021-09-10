@@ -115,50 +115,68 @@ class _TimeToolState extends State<TimeTool> {
               ),
             ),
             SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 30,
+              runSpacing: 10,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    if (!_formKey.currentState!.validate()) {
-                      return;
-                    }
-                    setState(() {
-                      var text = _timeTextController.value.text;
-                      if (text == '') {
-                        this._time = DateTime.now();
-                        return;
-                      }
-                      if (kTimestampRegexp.hasMatch(text)) {
-                        this._time = DateTime.fromMillisecondsSinceEpoch(int.parse(text) * 1000);
-                        return;
-                      }
-                      var t = DateTime.tryParse(text);
-                      if (t != null) {
-                        this._time = t;
-                      }
-                    });
-                  },
-                  child: Text('转换'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      this._time = DateTime.now();
-                    });
-                  },
-                  child: Text('当前时间'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      this._time =
-                          DateTime.fromMillisecondsSinceEpoch(this._time.millisecondsSinceEpoch ~/ 3600000 * 3600000);
-                    });
-                  },
-                  child: Text('整点'),
-                ),
-              ],
+                    ElevatedButton(
+                      onPressed: () {
+                        if (!_formKey.currentState!.validate()) {
+                          return;
+                        }
+                        setState(() {
+                          var text = _timeTextController.value.text;
+                          if (text == '') {
+                            this._time = DateTime.now();
+                            return;
+                          }
+                          if (kTimestampRegexp.hasMatch(text)) {
+                            this._time = DateTime.fromMillisecondsSinceEpoch(int.parse(text) * 1000);
+                            return;
+                          }
+                          var t = DateTime.tryParse(text);
+                          if (t != null) {
+                            this._time = t;
+                          }
+                        });
+                      },
+                      child: Text('转换'),
+                    ),
+                  ] +
+                  [
+                    [
+                      "当前时间",
+                      (DateTime t) => DateTime.now(),
+                    ],
+                    [
+                      "整点",
+                      (DateTime t) => DateTime.fromMillisecondsSinceEpoch(t.millisecondsSinceEpoch ~/ 3600000 * 3600000)
+                    ],
+                    [
+                      "半点",
+                      (DateTime t) => DateTime.fromMillisecondsSinceEpoch(t.millisecondsSinceEpoch ~/ 1800000 * 1800000)
+                    ],
+                    ["一小时前", (DateTime t) => DateTime.fromMillisecondsSinceEpoch(t.millisecondsSinceEpoch - 3600000)],
+                    ["一小时后", (DateTime t) => DateTime.fromMillisecondsSinceEpoch(t.millisecondsSinceEpoch + 3600000)],
+                    [
+                      "一天前",
+                      (DateTime t) => DateTime.fromMillisecondsSinceEpoch(t.millisecondsSinceEpoch - 3600000 * 24)
+                    ],
+                    [
+                      "一天后",
+                      (DateTime t) => DateTime.fromMillisecondsSinceEpoch(t.millisecondsSinceEpoch + 3600000 * 24)
+                    ],
+                  ]
+                      .map((e) => ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                this._time = (e[1] as Function)(this._time);
+                              });
+                            },
+                            child: Text(e[0] as String),
+                          ))
+                      .toList(),
             ),
             SizedBox(height: 10),
             Divider(),
