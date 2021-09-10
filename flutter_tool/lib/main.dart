@@ -5,6 +5,7 @@ import 'package:flutter_tool/pages/tools/binary_conversion_tool_page.dart';
 import 'package:flutter_tool/pages/tools/chinese_money_tool_page.dart';
 import 'package:flutter_tool/pages/tools/crypto_tool_page.dart';
 import 'package:flutter_tool/pages/tools/escape_tool_page.dart';
+import 'package:flutter_tool/pages/tools/hash_tool.dart';
 import 'package:flutter_tool/pages/tools/time_tool_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -53,6 +54,7 @@ class HomePage extends StatelessWidget {
     '/tool/binaryConversion': (context) => BinaryConversionToolPage(),
     '/tool/escape': (context) => EscapeToolPage(),
     '/tool/chineseMoney': (context) => ChineseMoneyToolPage(),
+    '/tool/hash': (context) => HashToolPage(),
   };
 
   @override
@@ -81,6 +83,7 @@ class ToolsGrid extends StatelessWidget {
     ["Base64 编解码", "/tool/base64"],
     ["UNIX 时间戳", "/tool/time"],
     ["消息摘要", "/tool/crypto"],
+    ["Hash", "/tool/hash"],
     ["进制转换", "/tool/binaryConversion"],
     ["字符串转义", "/tool/escape"],
     ["人命币转大写", "/tool/chineseMoney"],
