@@ -7,7 +7,6 @@ import 'package:flutter_tool/pages/tools/crypto_tool_page.dart';
 import 'package:flutter_tool/pages/tools/escape_tool_page.dart';
 import 'package:flutter_tool/pages/tools/hash_tool.dart';
 import 'package:flutter_tool/pages/tools/time_tool_page.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(ToolApp());
@@ -18,8 +17,6 @@ class ToolApp extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final List<String> fallbackFonts = [GoogleFonts.robotoCondensed().fontFamily!, GoogleFonts.zcoolKuaiLe().fontFamily!];
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,9 +25,7 @@ class ToolApp extends StatelessWidget {
       theme: FlexColorScheme.light(
         scheme: FlexScheme.bigStone,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        // fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-        // fontFamily: GoogleFonts.longCang().fontFamily,
-        // fontFamily: 'SourceHanSansSC',
+        fontFamily: 'Source Han Sans SC',
         transparentStatusBar: true,
         appBarElevation: 5,
       ).toTheme,
