@@ -10,7 +10,6 @@ import 'package:flutter_tool/pages/tools/time_tool_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  // GoogleFonts.config.allowRuntimeFetching = false;
   runApp(ToolApp());
 }
 

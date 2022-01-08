@@ -11,6 +11,7 @@ env:
     NAME: "flutter-tool"
     IMAGE_REPOSITORY: "flutter-tool"
     IMAGE_TAG: "$(git describe --tags | awk '{print(substr($0,2,length($0)))}')"
+    FLUTTER_ROOT: "flutter_tool"
   dev:
     K8S_CONTEXT: "home-k8s"
     NAMESPACE: "dev"
@@ -50,9 +51,25 @@ task:
             --docker-password=${REGISTRY_PASSWORD} \
             --namespace=${NAMESPACE}
         }
-  font:
+  fonts:
     step:
-      - wget https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip
+      - mkdir -p ${TMP}/assets/fonts && mkdir -p ${FLUTTER_ROOT}/assets/fonts
+      - wget https://fonts.google.com/download?family=Roboto -O ${TMP}/assets/fonts/Roboto.zip
+      - unzip -o ${TMP}/assets/fonts/Roboto.zip -d ${FLUTTER_ROOT}/assets/fonts/Roboto
+      - wget https://fonts.google.com/download?family=Roboto%20Condensed -O ${TMP}/assets/fonts/RobotoCondensed.zip
+      - unzip -o ${TMP}/assets/fonts/RobotoCondensed.zip -d ${FLUTTER_ROOT}/assets/fonts/RobotoCondensed
+      - wget https://fonts.google.com/download?family=Source%20Code%20Pro -O ${TMP}/assets/fonts/SourceCodePro.zip
+      - unzip -o ${TMP}/assets/fonts/SourceCodePro.zip -d ${FLUTTER_ROOT}/assets/fonts/SourceCodePro
+      - wget https://fonts.google.com/download?family=Noto%20Sans%20SC -O ${TMP}/assets/fonts/NotoSansSC.zip
+      - unzip -o ${TMP}/assets/fonts/NotoSansSC.zip -d ${FLUTTER_ROOT}/assets/fonts/NotoSansSC
+      - wget https://fonts.google.com/download?family=Noto%20Serif%20SC -O ${TMP}/assets/fonts/NotoSerifSC.zip
+      - unzip -o ${TMP}/assets/fonts/NotoSerifSC.zip -d ${FLUTTER_ROOT}/assets/fonts/NotoSerifSC
+      - wget https://fonts.google.com/download?family=ZCOOL%20XiaoWei -O ${TMP}/assets/fonts/ZCOOLXiaoWei.zip
+      - unzip -o ${TMP}/assets/fonts/ZCOOLXiaoWei.zip -d ${FLUTTER_ROOT}/assets/fonts/ZCOOLXiaoWei
+      - wget https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip -O ${TMP}/assets/fonts/SourceHanSansSC.zip
+      - unzip -o ${TMP}/assets/fonts/SourceHanSansSC.zip -d ${FLUTTER_ROOT}/assets/fonts/SourceHanSansSC
+      - wget https://fonts.google.com/download?family=Cousine -O ${TMP}/assets/fonts/Cousine.zip
+      - unzip -o ${TMP}/assets/fonts/Cousine.zip -d ${FLUTTER_ROOT}/assets/fonts/Cousine
   image:
     step:
       - docker build --tag="${REGISTRY_NAMESPACE}/${IMAGE_REPOSITORY}:${IMAGE_TAG}" .

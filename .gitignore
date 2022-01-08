@@ -1,3 +1,5 @@
 .cfg
 tmp/
 .idea/
+venv/
+flutter_tool/assets/fonts
