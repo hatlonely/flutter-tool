@@ -82,14 +82,152 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-  # 中文字体太大了，先注释了
-#  fonts:
-#    - family: SourceHanSansSC
-#      fonts:
-#        - asset: fonts/SourceHanSansSC/SourceHanSansSC-Regular.otf
-#        - asset: fonts/SourceHanSansSC/SourceHanSansSC-Bold.otf
-#        - asset: fonts/SourceHanSansSC/SourceHanSansSC-ExtraLight.otf
-#        - asset: fonts/SourceHanSansSC/SourceHanSansSC-Heavy.otf
-#        - asset: fonts/SourceHanSansSC/SourceHanSansSC-Light.otf
-#        - asset: fonts/SourceHanSansSC/SourceHanSansSC-Medium.otf
-#        - asset: fonts/SourceHanSansSC/SourceHanSansSC-Normal.otf
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Roboto/Roboto-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Roboto/Roboto-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Roboto/Roboto-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Roboto/Roboto-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Roboto/Roboto-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Roboto/Roboto-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Roboto/Roboto-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Roboto/Roboto-BlackItalic.ttf
+          weight: 900
+          style: italic
+    - family: Roboto Condensed
+      fonts:
+        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Light.ttf
+          weight: 300
+        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-LightItalic.ttf
+          weight: 300
+        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-Italic.ttf
+          weight: 400
+        - asset: assets/fonts/RobotoCondensed/RobotoCondensed-BoldItalic.ttf
+          weight: 700
+    - family: Source Code Pro
+      fonts:
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-Light.ttf
+          weight: 300
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-Black.ttf
+          weight: 900
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/SourceCodePro/static/SourceCodePro-BlackItalic.ttf
+          weight: 900
+          style: italic
+    - family: Noto Sans SC
+      fonts:
+        - asset: assets/fonts/NotoSansSC/NotoSansSC-Thin.otf
+          weight: 100
+        - asset: assets/fonts/NotoSansSC/NotoSansSC-Light.otf
+          weight: 300
+        - asset: assets/fonts/NotoSansSC/NotoSansSC-Regular.otf
+          weight: 400
+        - asset: assets/fonts/NotoSansSC/NotoSansSC-Medium.otf
+          weight: 500
+        - asset: assets/fonts/NotoSansSC/NotoSansSC-Bold.otf
+          weight: 700
+        - asset: assets/fonts/NotoSansSC/NotoSansSC-Black.otf
+          weight: 900
+    - family: Noto Serif SC
+      fonts:
+        - asset: assets/fonts/NotoSerifSC/NotoSerifSC-ExtraLight.otf
+          weight: 200
+        - asset: assets/fonts/NotoSerifSC/NotoSerifSC-Light.otf
+          weight: 300
+        - asset: assets/fonts/NotoSerifSC/NotoSerifSC-Regular.otf
+          weight: 400
+        - asset: assets/fonts/NotoSerifSC/NotoSerifSC-Medium.otf
+          weight: 500
+        - asset: assets/fonts/NotoSerifSC/NotoSerifSC-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/NotoSerifSC/NotoSerifSC-Bold.otf
+          weight: 700
+        - asset: assets/fonts/NotoSerifSC/NotoSerifSC-Black.otf
+          weight: 900
+    - family: ZCOOL XiaoWei
+      fonts:
+        - asset: assets/fonts/ZCOOLXiaoWei/ZCOOLXiaoWei-Regular.ttf
+          weight: 400
+    - family: Source Han Sans SC
+      fonts:
+        - asset: assets/fonts/SourceHanSansSC/OTF/SimplifiedChinese/SourceHanSansSC-ExtraLight.otf
+          weight: 200
+        - asset: assets/fonts/SourceHanSansSC/OTF/SimplifiedChinese/SourceHanSansSC-Light.otf
+          weight: 300
+        - asset: assets/fonts/SourceHanSansSC/OTF/SimplifiedChinese/SourceHanSansSC-Regular.otf
+          weight: 400
+        - asset: assets/fonts/SourceHanSansSC/OTF/SimplifiedChinese/SourceHanSansSC-Medium.otf
+          weight: 500
+        - asset: assets/fonts/SourceHanSansSC/OTF/SimplifiedChinese/SourceHanSansSC-Bold.otf
+          weight: 700
+        - asset: assets/fonts/SourceHanSansSC/OTF/SimplifiedChinese/SourceHanSansSC-Heavy.otf
+          weight: 900
+    - family: Cousine
+      fonts:
+        - asset: assets/fonts/Cousine/Cousine-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Cousine/Cousine-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Cousine/Cousine-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Cousine/Cousine-BoldItalic.ttf
+          weight: 700
+          style: italic
