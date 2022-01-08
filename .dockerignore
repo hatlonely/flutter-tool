@@ -21,26 +21,26 @@
 #.vscode/
 
 # Flutter/Dart/Pub related
-flutter_article/**/doc/api/
-flutter_article/**/ios/Flutter/.last_build_id
-flutter_article/.dart_tool/
-flutter_article/.flutter-plugins
-flutter_article/.flutter-plugins-dependencies
-flutter_article/.packages
-flutter_article/.pub-cache/
-flutter_article/.pub/
-flutter_article/build/
+flutter_tool/**/doc/api/
+flutter_tool/**/ios/Flutter/.last_build_id
+flutter_tool/.dart_tool/
+flutter_tool/.flutter-plugins
+flutter_tool/.flutter-plugins-dependencies
+flutter_tool/.packages
+flutter_tool/.pub-cache/
+flutter_tool/.pub/
+flutter_tool/build/
 
 # Web related
-flutter_article/lib/generated_plugin_registrant.dart
+flutter_tool/lib/generated_plugin_registrant.dart
 
 # Symbolication related
-flutter_article/app.*.symbols
+flutter_tool/app.*.symbols
 
 # Obfuscation related
-flutter_article/app.*.map.json
+flutter_tool/app.*.map.json
 
 # Android Studio will place build artifacts here
-flutter_article/android/app/debug
-flutter_article/android/app/profile
-flutter_article/android/app/release
+flutter_tool/android/app/debug
+flutter_tool/android/app/profile
+flutter_tool/android/app/release
