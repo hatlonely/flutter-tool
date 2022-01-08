@@ -163,7 +163,7 @@ class _HashToolState extends State<HashTool> {
                   .map((e) => ElevatedButton(
                         onPressed: () async {
                           final Response<Map> res =
-                              await Dio().post('http://k8s.rpc.tool.hatlonely.com/v1/tool/hash', data: {
+                              await Dio().post('https://k8s.rpc.tool.hatlonely.com/v1/tool/hash', data: {
                             'hash': e,
                             'text': _messageTextController.value.text,
                           });
